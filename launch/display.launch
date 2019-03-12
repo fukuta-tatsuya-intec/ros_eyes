@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="src_topic" default="quaternion"/>
+  <arg name="bg_color" default="255,255,255"/>
+  <arg name="is_fullscreen" default="false"/>
+  <arg name="hz" default="30"/>
+  <arg name="width" default="800"/>
+  <arg name="height" default="480"/>
+  <node name="ros_eye_display" pkg="ros_eyes" type="display.py" output="screen">
+    <remap from="src_topic" to="$(arg src_topic)"/>
+    <param name="bg_color" value="$(arg bg_color)" />
+    <param name="is_fullscreen" type="bool" value="$(arg is_fullscreen)"/>
+    <param name="hz" type="int" value="$(arg hz)"/>
+    <param name="width" type="int" value="$(arg width)"/>
+    <param name="height" type="int" value="$(arg height)"/>
+  </node>
+</launch>
